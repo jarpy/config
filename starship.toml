@@ -1,0 +1,144 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+$username\
+$hostname\
+$localip\
+$shlvl\
+$singularity\
+$directory\
+$vcsh\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$hg_branch\
+$docker_context\
+$package\
+$c\
+$cmake\
+$cobol\
+$daml\
+$dart\
+$deno\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$golang\
+$haskell\
+$helm\
+$java\
+$julia\
+$kotlin\
+$lua\
+$nim\
+$nodejs\
+$ocaml\
+$perl\
+$php\
+$pulumi\
+$purescript\
+$python\
+$raku\
+$rlang\
+$red\
+$ruby\
+$rust\
+$scala\
+$swift\
+$terraform\
+$vlang\
+$vagrant\
+$zig\
+$buf\
+$nix_shell\
+$conda\
+$spack\
+$memory_usage\
+$aws\
+$gcloud\
+$openstack\
+$azure\
+$env_var\
+$crystal\
+$custom\
+$sudo\
+$cmd_duration\
+$kubernetes\
+$line_break\
+$jobs\
+$battery\
+$time\
+$status\
+$container\
+$shell\
+$character"""
+
+[custom.vault_addr_locked]
+shell = "/bin/bash"
+symbol = "🔒"
+command = "HOST=${VAULT_ADDR##https://}; echo ${HOST%%.*}"
+when = """ [[ -n "$VAULT_ADDR" && -z "$VAULT_TOKEN" ]] """
+style = "221"
+
+[custom.vault_addr_unlocked]
+shell = "/bin/bash"
+symbol = "🔑"
+command = "HOST=${VAULT_ADDR##https://}; echo ${HOST%%.*}"
+when = """ [[ -n "$VAULT_ADDR" && -n "$VAULT_TOKEN" ]] """
+style = "221"
+
+[custom.virtualenv]
+shell = "/bin/sh"
+symbol = "🐍"
+command = "BASE=${VIRTUAL_ENV##*/}; echo ${BASE%%-*}"
+when = """ [[ -n "$VIRTUAL_ENV" ]] """
+style = "149"
+
+[aws]
+disabled = true
+
+[buf]
+disabled = true
+
+[cmd_duration]
+disabled = true
+
+[directory]
+truncate_to_repo = false
+truncation_symbol= "…/"
+style = "243"
+
+[git_branch]
+symbol = "🔀"
+format = "[$symbol$branch(:$remote_branch)]($style) "
+style = "153"
+
+[git_status]
+style = "68"
+
+[golang]
+disabled = true
+
+[gcloud]
+disabled = true
+
+[kubernetes]
+symbol = "☸️"
+format = '[$symbol $context/($namespace) ]($style)'
+disabled = false
+"style" = "177"
+
+[package]
+disabled = true
+
+[python]
+disabled = true
+
+[shell]
+disabled = false
+fish_indicator = ""
+bash_indicator = "bash"
+format = "$indicator"
