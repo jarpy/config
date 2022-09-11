@@ -76,6 +76,10 @@ $container\
 $shell\
 $character"""
 
+[character]
+success_symbol = "🍏"
+error_symbol = "🍎"
+
 [custom.vault_addr_locked]
 shell = "/bin/bash"
 symbol = "🔒"
